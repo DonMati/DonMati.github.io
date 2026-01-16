@@ -7,9 +7,11 @@
 <meta name="keywords" content="ChatGPT hallucinations, verify ChatGPT answers, AI factual errors, AI verification techniques">
 <title>ChatGPT Truth & Prompt Bundle | DonMati</title>
 <style>
+  /* Reset & base */
   * { margin:0; padding:0; box-sizing:border-box; font-family: 'Segoe UI', Arial, sans-serif; }
   body { background: #f7f8fa; color: #1a1a1a; line-height: 1.6; }
 
+  /* Header */
   header { 
     background: linear-gradient(135deg, #0d47a1, #1976d2);
     color: white; text-align: center; padding: 100px 20px; 
@@ -17,6 +19,7 @@
   header h1 { font-size: 3em; margin-bottom: 20px; font-weight:700; }
   header p { font-size: 1.4em; max-width:700px; margin: 0 auto; }
 
+  /* CTA Button */
   .cta { 
     display: inline-block; padding: 18px 35px; background: #ff6f00; color:white; 
     text-decoration:none; border-radius:8px; font-weight:700; font-size:1.2em; 
@@ -24,19 +27,31 @@
   }
   .cta:hover { background: #e65c00; }
 
-  main { max-width: 1000px; margin: 60px auto; padding:0 20px; }
+  /* Main content */
+  main { max-width: 900px; margin: 60px auto; padding:0 20px; }
 
-  section { margin-bottom: 80px; display: flex; align-items: center; gap:30px; flex-wrap: wrap; }
-  section img { max-width:400px; width:100%; border-radius:10px; box-shadow:0 8px 20px rgba(0,0,0,0.1);}
+  section { 
+    margin-bottom: 80px; padding:40px; border-radius:12px; 
+    background: linear-gradient(135deg, #ffffff, #e8f0fe); 
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05); 
+    opacity:0; transform: translateY(30px); 
+    transition: all 0.8s ease;
+  }
+  section.visible { opacity:1; transform: translateY(0); }
+
   h2 { font-size:2em; margin-bottom:15px; color:#0d47a1; }
+  h3 { color:#1976d2; margin-bottom:10px; }
   p { font-size:1.1em; line-height:1.7; }
   ul { margin-left:20px; list-style: disc; margin-bottom:15px; }
 
-  .reverse { flex-direction: row-reverse; }
-
   footer { text-align:center; padding:25px 10px; font-size:0.9em; color:#777; border-top:1px solid #ddd; }
 
-  @media(max-width:900px){ section { flex-direction: column; text-align:center;} section img { margin-bottom:20px; } }
+  @media(max-width:600px){
+    header h1 { font-size:2em; }
+    header p { font-size:1em; }
+    .cta { font-size:1em; padding:15px 25px; }
+    section { padding:20px; }
+  }
 </style>
 </head>
 <body>
@@ -49,33 +64,24 @@
 
 <main>
   <section>
-    <img src="https://source.unsplash.com/600x400/?ai,technology" alt="AI verification">
-    <div>
-      <h2>Why Verify AI Responses?</h2>
-      <p>Even the smartest AI can produce convincing but incorrect information. Avoid misinformation and ensure your decisions are based on verified answers.</p>
-    </div>
-  </section>
-
-  <section class="reverse">
-    <img src="https://source.unsplash.com/600x400/?computer,analysis" alt="Technical system">
-    <div>
-      <h2>Our 7-Step Verification System</h2>
-      <p>We designed a clear, technical, and fast method to verify ChatGPT answers. Perfect for professionals, analysts, and corporate teams.</p>
-      <ul>
-        <li>Step-by-step verification guide</li>
-        <li>Ready-to-use prompts for instant results</li>
-        <li>Minimize risk from AI errors</li>
-      </ul>
-    </div>
+    <h2>Why Verify AI Responses?</h2>
+    <p>Even the smartest AI can produce convincing but incorrect information. Avoid misinformation and ensure your decisions are based on verified answers.</p>
   </section>
 
   <section>
-    <img src="https://source.unsplash.com/600x400/?document,pdf" alt="Prompt bundle">
-    <div>
-      <h2>Get the PDF + Prompt Bundle</h2>
-      <p>Download our professional guide and prompt set to instantly verify AI outputs, saving time and ensuring accuracy for your company or personal projects.</p>
-      <a href="https://kowa2.gumroad.com/l/lpxevf?_gl=1*1mxp9vu*_ga*MTQzNTgxMzYyNi4xNzY4NTk1Mjkx*_ga_6LJN6D94N6*czE3Njg2MDA5MDIkbzIkZzEkdDE3Njg2MDMwMTQkajQ2JGwwJGgw" class="cta" target="_blank">Download PDF + Prompt Bundle – $18,99</a>
-    </div>
+    <h2>Our 7-Step Verification System</h2>
+    <p>We designed a clear, technical, and fast method to verify ChatGPT answers. Perfect for professionals, analysts, and corporate teams.</p>
+    <ul>
+      <li>Step-by-step verification guide</li>
+      <li>Ready-to-use prompts for instant results</li>
+      <li>Minimize risk from AI errors</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Get the PDF + Prompt Bundle</h2>
+    <p>Download our professional guide and prompt set to instantly verify AI outputs, saving time and ensuring accuracy for your company or personal projects.</p>
+    <a href="https://kowa2.gumroad.com/l/lpxevf?_gl=1*1mxp9vu*_ga*MTQzNTgxMzYyNi4xNzY4NTk1Mjkx*_ga_6LJN6D94N6*czE3Njg2MDA5MDIkbzIkZzEkdDE3Njg2MDMwMTQkajQ2JGwwJGgw" class="cta" target="_blank">Download PDF + Prompt Bundle – $18,99</a>
   </section>
 </main>
 
@@ -83,4 +89,19 @@
   &copy; 2026 DonMati. All rights reserved.
 </footer>
 
+<script>
+  // Animacja fade-in sekcji przy przewijaniu
+  const sections = document.querySelectorAll('section');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold:0.2 });
+
+  sections.forEach(sec => observer.observe(sec));
+</script>
+
 </body>
+</html>
